@@ -1,0 +1,19 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+img=cv2.imread('sample.jpg')
+gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+blur=cv2.GaussianBlur(gray,(5,5),0)
+edges=cv2.Canny(gray,50,150)
+kernel=np.ones((5,5))
+dilated=cv2.dilate(edges,kernel)
+plt.imshow(img)
+plt.show()
+plt.imshow(gray)
+plt.show()
+plt.imshow(blur)
+plt.show()
+plt.imshow(edges)
+plt.show()
+plt.imshow(dilated)
+plt.show()
