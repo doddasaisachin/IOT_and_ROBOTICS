@@ -1,0 +1,45 @@
+// C++ code
+//
+int moistureValue;
+float moisturePercentage;
+
+void setup()
+{
+Serial.begin(9600);
+pinMode(13, OUTPUT);
+pinMode(12, OUTPUT);
+pinMode(11, OUTPUT);
+}
+
+void loop()
+{
+moistureValue = analogRead(A0);
+moisturePercentage = ((moistureValue/539.00) * 100);
+Serial.print("Moisture Value: ");
+Serial.print(moistureValue);
+Serial.print("\nMoisture Percentage: ");
+Serial.print(moisturePercentage);
+if (moisturePercentage < 15.00)
+{
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+if ((moisturePercentage < 70.00) && (moisturePercentage >= 15.00))
+{
+  digitalWrite(12, HIGH);
+  delay(1000);
+  digitalWrite(12, LOW);
+  delay(1000);
+}
+if ((moisturePercentage <= 100.00) && (moisturePercentage >= 70.00))
+{
+  digitalWrite(11, HIGH);
+  delay(1000);
+  digitalWrite(11, LOW);
+  delay(1000);
+}
+Serial.print("\n*\n");
+delay(1000);
+}
